@@ -1,0 +1,30 @@
+{
+    "name": "wcaddons",
+    "version": "1.0",
+    "description": "Features to enchance your worldcubeassociation.org experience",
+    "permissions":["declarativeContent","storage","tabs"],
+    "web_accessible_resources": [
+      "images/*.*",
+      "popups/statsPage/*.*"
+    ],
+    "background": {
+      "scripts": ["background/background.js"],
+      "persistent": false
+    },
+    "content_scripts": [{
+        "js":["content/content.js"],
+        "css":["content/content.css"],
+        "matches":["https://www.worldcubeassociation.org/persons/*"]
+    }],
+    "page_action": {
+        "default_popup": "popups/popupOne/popup.html",
+        "default_icon": {
+            "16": "images/sourcecodeblue.png"
+          }
+    },
+    "icons": {
+        "16": "images/sourcecodeblue.png"
+    },
+    "options_page": "options/options.html",
+    "manifest_version": 2
+  }

@@ -1,0 +1,72 @@
+body {
+    min-width: 350px; /* your desired width */
+    min-height:420px;
+    max-height: 100%;
+    text-align: center;
+    font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+table {
+    position:fixed;
+    text-align: center;
+    table-layout: fixed;
+    margin-bottom: 10px;
+    width: 100%;
+    max-height: 300px;
+}
+
+td {
+    width: 45%;
+    padding: 5px;
+}
+
+tr {
+    text-align: center;
+}
+
+h1 {
+    font-size: 15px;
+}
+
+#header {
+    left:0;
+    right:0;
+    width: 100%;
+}
+
+#app-name {
+    top:0;
+    font-size: 20px;
+    color: #3498db;
+    font-style: italic;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+#footer {
+    display: flex;
+    width:100%;
+    left:0;
+    right:0;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    border-top: slategrey solid 2px;
+    padding: 5px;
+}
+
+#clear-names {
+    transition: 0.2s;
+}
+
+#clear-names:hover {
+    cursor:pointer;
+}
+
+#compare {
+    transition: 0.2s;
+}
+
+#compare:hover {
+    cursor:pointer;
+}
