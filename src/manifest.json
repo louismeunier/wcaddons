@@ -19,11 +19,11 @@
     "page_action": {
         "default_popup": "popups/popupOne/popup.html",
         "default_icon": {
-            "16": "images/sourcecodeblue.png"
+            "16": "images/logo.png"
           }
     },
     "icons": {
-        "16": "images/sourcecodeblue.png"
+        "16": "images/logo.png"
     },
     "options_page": "options/options.html",
     "manifest_version": 2

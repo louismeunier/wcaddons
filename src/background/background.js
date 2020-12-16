@@ -5,7 +5,7 @@ chrome.runtime.onInstalled.addListener(function() {
       console.log(items);
       console.log("Initialized wcaData");
     })
-
+    open(chrome.extension.getURL("popups/other/installed.html"));
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
         conditions: [new chrome.declarativeContent.PageStateMatcher({

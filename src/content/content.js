@@ -17,8 +17,16 @@ function scrapeMeta() {
     var gender = document.querySelector("#person > div:nth-child(1) > div.details > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr > td:nth-child(3)").innerText;
     var compCount = document.querySelector("#person > div:nth-child(1) > div.details > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr > td:nth-child(4)").innerText;
     var solveCount = document.querySelector("#person > div:nth-child(1) > div.details > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr > td:nth-child(5)").innerText;
-    
-    return {"country":country,"gender":gender,"compCount":parseInt(compCount),"solveCount":parseInt(solveCount)};
+    var name = document.getElementsByTagName("title")[0].innerText;
+    var formattedName = name.slice(0,name.lastIndexOf("|"));
+    var avatar;
+    if (document.querySelector("#person > div:nth-child(1) > div.text-center > img.avatar")) {
+        avatar = document.querySelector("#person > div:nth-child(1) > div.text-center > img.avatar").getAttribute("src");
+    }
+    else {
+        avatar = chrome.extension.getURL("images/noavatar.png");
+    }
+    return {"name":formattedName,"avatar":avatar,"country":country,"gender":gender,"compCount":parseInt(compCount),"solveCount":parseInt(solveCount)};
 }
 /*
 Will do soon, will take awhile...
@@ -68,9 +76,8 @@ function addName() {
             var allTables = document.getElementsByClassName("table table-striped");
             var meta = scrapeMeta();
             var pbs = allTables[1].innerHTML;
-            var name = document.getElementsByTagName("title")[0].innerText;
-            var formattedName = name.slice(0,name.lastIndexOf("|"));
-            currentIDS[wcaID]={"name":formattedName,"meta":meta,"pbs":pbs};
+
+            currentIDS[wcaID]={"meta":meta,"pbs":pbs};
             console.log("Adding entry");
             document.getElementById("--extension-button-add").src=subtractionURL;
         };
