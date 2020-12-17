@@ -1,5 +1,26 @@
+body {
+    height: 100%;
+    width: 100%;
+    font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
 #stats {
     display: inline-flex;
     justify-content: space-around;
     width: 100%;
+    height: 100%;
+}
+
+.country {
+    font-style: italic;
+}
+
+.solves-per-comp {
+    font-style: italic;
+    font-size: 15px;
+}
+
+.barrier {
+    width:10px;
+    background-color: gainsboro;
 }
