@@ -2,7 +2,7 @@ function scrapeData() {
     chrome.storage.local.get(["wcaData"], function(items) {
         var ids = Object.keys(items.wcaData);
         console.log(ids);
-        ids.forEach(id=>document.getElementById('wca-ids-body').innerHTML+=`<tr><td class=\"wca-name-data\">${items.wcaData[id]["name"]} </td><td class=\"wca-id-data\"> ${id}</td></tr>`);
+        ids.forEach(id=>document.getElementById('wca-ids-body').innerHTML+=`<tr><td class=\"wca-name-data\">${items.wcaData[id]["meta"]["name"]} </td><td class=\"wca-id-data\"> ${id}</td></tr>`);
     });
 }
 

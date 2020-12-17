@@ -26,7 +26,7 @@ function scrapeMeta() {
     else {
         avatar = chrome.extension.getURL("images/noavatar.png");
     }
-    return {"name":formattedName,"avatar":avatar,"country":country,"gender":gender,"compCount":parseInt(compCount),"solveCount":parseInt(solveCount)};
+    return {"id":scrapeName(),"name":formattedName,"avatar":avatar,"country":country,"gender":gender,"compCount":parseInt(compCount),"solveCount":parseInt(solveCount)};
 }
 /*
 Will do soon, will take awhile...
