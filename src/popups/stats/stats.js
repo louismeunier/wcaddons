@@ -11,7 +11,19 @@ function baseElement(type,className=null,content=null) {
     return newElement;
 }
 
+function setTheme() {
+    chrome.storage.local.get(["themePref"], function(items) {
+        var theme = items.themePref;
+        if (theme=="light") {
+            document.getElementsByTagName("body")[0].className="theme-light";
+        }
+        else if (theme=="dark") {
+            document.getElementsByTagName("body")[0].className="theme-dark";
+        }
+    })
+}
 function initialize() {
+    setTheme();
     chrome.storage.local.get(["wcaData"], function(items) {
         var keys = items.wcaData;
         for (var i=0;i<keys.length;i++) {
