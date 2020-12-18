@@ -13,4 +13,6 @@ var versionNumber = chrome.runtime.getManifest().version;
 document.getElementById("version").innerText+=versionNumber;
 document.getElementById("logo").src=chrome.extension.getURL("images/logo.png");
 document.getElementById("github").src=chrome.extension.getURL("images/github.png");
+document.getElementById("options").onclick= () => {open(chrome.extension.getURL("options/options.html"))};
+document.getElementById("options").src = chrome.extension.getURL("images/settings.png");
 document.addEventListener("DOMContentLoaded",setTheme);

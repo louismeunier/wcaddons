@@ -5,7 +5,7 @@
     "permissions":["declarativeContent","storage","tabs","https://www.worldcubeassociation.org/*"],
     "web_accessible_resources": [
       "images/*.*",
-      "popups/stats/*.*"
+      "views/stats/*.*"
     ],
     "background": {
       "scripts": ["background/background.js"],
@@ -17,7 +17,7 @@
         "matches":["https://www.worldcubeassociation.org/persons/*"]
     }],
     "page_action": {
-        "default_popup": "popups/popupOne/popup.html",
+        "default_popup": "views/popup/popup.html",
         "default_icon": {
             "16": "images/logo.png"
           }

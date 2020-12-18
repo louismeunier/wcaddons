@@ -1,14 +1,4 @@
-.theme-light {
-    --main-bkd: white;
-    --font-color: black;
-    --second-bkd: rgb(231, 231, 231);
-}
-
-.theme-dark {
-    --main-bkd: #535c68;
-    --font-color: #cbcdcf;
-    --second-bkd: rgba(209, 209, 209, 0.781);
-}
+@import url("../themes.css");
 
 body {
     height: 100%;
@@ -16,6 +6,7 @@ body {
     background-color: var(--main-bkd);
     color: var(--font-color);
     font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    overflow-x: hidden;
 }
 
 #stats {

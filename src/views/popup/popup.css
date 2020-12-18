@@ -1,15 +1,5 @@
-.theme-light {
-    --main-bkd: white;
-    --font-color: black;
-    --second-bkd: rgb(231, 231, 231);
-}
+@import url("../themes.css");
 
-
-.theme-dark {
-    --main-bkd: #535c68;
-    --font-color: #cbcdcf;
-    --second-bkd: rgba(209, 209, 209, 0.781);
-}
 body {
     min-width: 350px; /* your desired width */
     min-height:420px;

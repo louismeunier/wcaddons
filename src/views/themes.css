@@ -1,0 +1,12 @@
+.theme-light {
+    --main-bkd: white;
+    --font-color: black;
+    --second-bkd: rgb(231, 231, 231);
+}
+
+
+.theme-dark {
+    --main-bkd: #535c68;
+    --font-color: #cbcdcf;
+    --second-bkd: rgba(209, 209, 209, 0.781);
+}
