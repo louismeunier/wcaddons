@@ -8,11 +8,20 @@ body {
     display: inline-flex;
     justify-content: space-around;
     width: 100%;
-    height: 100%;
+    margin-top: 25px;
+    transition: 0.2s;
+    text-align: center;
 }
-
+.person {
+    width: 80%;
+}
 .country {
     font-style: italic;
+    font-size: 15px;
+}
+
+.gender {
+    font-size: 12px;
 }
 
 .solves-per-comp {

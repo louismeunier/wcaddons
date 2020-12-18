@@ -1,13 +1,13 @@
 function scrapeData() { 
     chrome.storage.local.get(["wcaData"], function(items) {
-        var ids = Object.keys(items.wcaData);
+        var ids = items.wcaData;
         console.log(ids);
-        ids.forEach(id=>document.getElementById('wca-ids-body').innerHTML+=`<tr><td class=\"wca-name-data\">${items.wcaData[id]["meta"]["name"]} </td><td class=\"wca-id-data\"> ${id}</td></tr>`);
+        ids.forEach(id=>document.getElementById('wca-ids-body').innerHTML+=`<tr><td class=\"wca-id-data\"> ${id}</td></tr>`);
     });
 }
 
 function clearStorage() {
-    chrome.storage.local.set({wcaData:{}}, function(items) {
+    chrome.storage.local.set({wcaData:[]}, function(items) {
         console.log("Storage Cleared");
         window.close();
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -19,11 +19,11 @@ function clearStorage() {
 
 function compareStats() {
     chrome.storage.local.get(["wcaData"], function(items) {
-        if (Object.keys(items.wcaData).length < 2) {
+        if (items.wcaData.length < 2) {
             alert("Too few people, mininmum: 2");
         }
         else {
-            open(chrome.extension.getURL("popups/statsPage/stats.html"));
+            open(chrome.extension.getURL("popups/stats/stats.html"));
         }
     })
    

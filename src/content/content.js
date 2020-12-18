@@ -4,37 +4,8 @@ function setGlobals() {
     additionURL = chrome.extension.getURL("images/addition1.png");
     subtractionURL = chrome.extension.getURL("images/clear.png");
 }
-
-function logCurrentNames() {
-    chrome.storage.local.get(["wcaIDS"],function(items) {
-        return items.wcaIDS;
-    }) 
-};
-
-function scrapeMeta() {
-    var countryRaw = document.querySelector("#person > div:nth-child(1) > div.details > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr > td:nth-child(1)").innerHTML;
-    var country = countryRaw.slice(countryRaw.lastIndexOf(">")+2);
-    var gender = document.querySelector("#person > div:nth-child(1) > div.details > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr > td:nth-child(3)").innerText;
-    var compCount = document.querySelector("#person > div:nth-child(1) > div.details > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr > td:nth-child(4)").innerText;
-    var solveCount = document.querySelector("#person > div:nth-child(1) > div.details > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr > td:nth-child(5)").innerText;
-    var name = document.getElementsByTagName("title")[0].innerText;
-    var formattedName = name.slice(0,name.lastIndexOf("|"));
-    var avatar;
-    if (document.querySelector("#person > div:nth-child(1) > div.text-center > img.avatar")) {
-        avatar = document.querySelector("#person > div:nth-child(1) > div.text-center > img.avatar").getAttribute("src");
-    }
-    else {
-        avatar = chrome.extension.getURL("images/noavatar.png");
-    }
-    return {"id":scrapeName(),"name":formattedName,"avatar":avatar,"country":country,"gender":gender,"compCount":parseInt(compCount),"solveCount":parseInt(solveCount)};
-}
-/*
-Will do soon, will take awhile...
-function scrapeBests() {
-
-}
-*/
-function scrapeName() {
+//Maybe add scrapeName function so that the popup has the name as well as teh id, but i dont think thats really necessary
+function scrapeID() {
     var wcaID = url.slice(url.lastIndexOf("/")+1);
     return wcaID;
 }
@@ -45,12 +16,12 @@ function clearStorage() {
 
 function setSymbol() {
     chrome.storage.local.get(["wcaData"], function(items) {
-        var ids = Object.keys(items.wcaData);
+        var ids = items.wcaData;
         if (ids==[]) {
             document.getElementById("--extension-button-add").src=additionURL;
         }
         else {
-            if (ids.indexOf(scrapeName())==-1) {
+            if (ids.indexOf(scrapeID())==-1) {
                 document.getElementById("--extension-button-add").src=additionURL;
             }
             else {
@@ -61,36 +32,32 @@ function setSymbol() {
 }
 
 function addName() {
-    var wcaID = scrapeName()
+    var wcaID = scrapeID()
     var currentIDS; 
     console.log("Getting old data...");
     
     chrome.storage.local.get(["wcaData"], function(items) {
         currentIDS = items.wcaData;
+        console.log(currentIDS);
         if (wcaID in currentIDS) {
-            delete currentIDS[wcaID];
+            currentIds = currentIds.splice(currentIDS.indexOf(wcaID),1);
             console.log("Removing entry");
             document.getElementById("--extension-button-add").src=additionURL;
         }
         else {
-            var allTables = document.getElementsByClassName("table table-striped");
-            var meta = scrapeMeta();
-            var pbs = allTables[1].innerHTML;
-
-            currentIDS[wcaID]={"meta":meta,"pbs":pbs};
+            currentIDS.push(scrapeID());
             console.log("Adding entry");
             document.getElementById("--extension-button-add").src=subtractionURL;
         };
         chrome.storage.local.set({"wcaData":currentIDS});
-        
     });
    
 }
 
 function setAddButtons() {
     if (url.match(/https:\/\/www.worldcubeassociation.org\/persons\/\d{4}\w{4}\d{2}/)) {
-
         var genHTML = document.getElementsByClassName("avatar")[0];
+        //maybe change this to using "insertAdjacentElement" or something like that so that its more clear what is being done (rather than weird strings)
         if (genHTML) {
             var parent = genHTML.parentElement;
             parent.innerHTML+="<img id=\"--extension-button-add\">";

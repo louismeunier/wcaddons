@@ -1,11 +1,11 @@
 {
     "name": "wcaddons",
-    "version": "1.0",
+    "version": "0.0.1",
     "description": "Features to enchance your worldcubeassociation.org experience",
-    "permissions":["declarativeContent","storage","tabs"],
+    "permissions":["declarativeContent","storage","tabs","https://www.worldcubeassociation.org/*"],
     "web_accessible_resources": [
       "images/*.*",
-      "popups/statsPage/*.*"
+      "popups/stats/*.*"
     ],
     "background": {
       "scripts": ["background/background.js"],
@@ -26,5 +26,6 @@
         "16": "images/logo.png"
     },
     "options_page": "options/options.html",
-    "manifest_version": 2
+    "manifest_version": 2,
+    "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js; object-src 'self'"
   }
