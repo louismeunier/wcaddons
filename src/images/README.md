@@ -8,3 +8,5 @@
 | [enter.png](enter.png) | [Random Enter Icon](https://www.flaticon.com/free-icon/enter_1828464?term=enter&page=1&position=8&related_item_id=1828464) | [Pixel perfect](flaticon.com/authors/pixel-perfect) |
 | [clear.png](clear.png) | [Random Clear](flaticon.com/authors/pixel-perfect) | [Pixelmeetup](https://www.flaticon.com/authors/pixelmeetup) |
 | [github.png](github.png) | [Official Github Logo](https://github.com/logos) | [Github](https://github.com) |
+| [logo.png](logo.png) | [Rubik's Cube](https://www.flaticon.com/free-icon/rubik_480453?term=rubiks%20cube&page=1&position=20&related_item_id=480453) | [Creaticca Creative Agency](https://www.flaticon.com/authors/creaticca-creative-agency) |
+| "   " | [Wrench](https://www.flaticon.com/free-icon/wrench_953761?term=wrench&page=1&position=2&related_item_id=953761) | [Freepik](https://www.flaticon.com/authors/freepik) |
