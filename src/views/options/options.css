@@ -1,0 +1,65 @@
+@import url("../themes.css");
+
+body {
+    font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    background-color: var(--main-bkd);
+    color: var(--font-color);
+}
+#header {
+    height: auto;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--second-bkd);
+    text-align: center;
+    padding: 10px;
+}
+#app-name {
+    font-size: 75px;
+    color:#3498db;
+}
+#description {
+    margin-top: 0;
+    font-size: 20px;
+}
+#disclaimer {
+    font-size: 15px;
+}
+a {
+    text-decoration: none;
+    color: slategray;
+}
+#options {
+    margin-top: 320px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.option {
+    background-color: var(--second-bkd);
+    padding: 15px;
+    padding-top: 5px;
+    color: gray;
+    border-radius: 10px;    
+    border-color: var(--font-color);
+    border-width: 2px;
+    text-align: center;
+}
+.option h2 {
+    font-size: 25px;
+}
+#disclaimer {
+    position: absolute;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+    bottom: 0;
+}
+#theme {
+    position: absolute;
+    bottom: 0;
+    right:0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+}

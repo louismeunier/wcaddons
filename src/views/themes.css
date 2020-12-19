@@ -1,11 +1,13 @@
 .theme-light {
     --main-bkd: white;
-    --font-color: black;
-    --second-bkd: rgb(231, 231, 231);
+    --font-color: #404040;
+    --second-bkd: #c4c4c4;
+    --highlight-color: #00CAFF;
 }
 
 .theme-dark {
     --main-bkd: #535c68;
-    --font-color: #cbcdcf;
-    --second-bkd: rgba(209, 209, 209, 0.781);
+    --font-color: #c4c4c4;
+    --second-bkd: rgba(155, 155, 155, 0.781);
+    --highlight-color: #000023;
 }
