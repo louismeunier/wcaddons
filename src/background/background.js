@@ -16,7 +16,7 @@ chrome.runtime.onInstalled.addListener(function() {
         console.log("Set theme!");
       })
     })
-    open(chrome.extension.getURL("popups/other/installed/installed.html"));
+    open(chrome.extension.getURL("views/other/installed/installed.html"));
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
         conditions: [new chrome.declarativeContent.PageStateMatcher({

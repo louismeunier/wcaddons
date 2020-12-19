@@ -23,7 +23,7 @@ function compareStats() {
             alert("Too few people, mininmum: 2");
         }
         else {
-            open(chrome.extension.getURL("popups/stats/stats.html"));
+            open(chrome.extension.getURL("views/stats/stats.html"));
         }
     })
    
@@ -41,12 +41,12 @@ function setTheme() {
     chrome.storage.local.get(["themePref"], function(items) {
         var theme = items.themePref;
         if (theme=="light") {
-            document.getElementById("toggle-theme").src = chrome.extension.getURL("images/moon.png");
+            document.getElementById("toggle-theme").src = chrome.extension.getURL("images/sun.png");
             document.getElementById("footer").className="theme-light";
             document.getElementsByTagName("body")[0].className="theme-light";
         }
         else if (theme=="dark") {
-            document.getElementById("toggle-theme").src = chrome.extension.getURL("images/sun.png");
+            document.getElementById("toggle-theme").src = chrome.extension.getURL("images/moon.png");
             document.getElementById("footer").className="theme-dark"
             document.getElementsByTagName("body")[0].className="theme-dark";
         }
@@ -73,7 +73,7 @@ function toggleTheme() {
 document.addEventListener('DOMContentLoaded',scrapeData)
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("clear-names").src=chrome.extension.getURL("images/clear.png");
-    document.getElementById("compare").src=chrome.extension.getURL("images/checkmark.png");
+    document.getElementById("compare").src=chrome.extension.getURL("images/enter.png");
     document.getElementById("clear-names").onclick=clearStorage;
     document.getElementById("compare").onclick = compareStats;
     document.getElementById("app-name").onmouseover = animateName;
