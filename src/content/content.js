@@ -1,8 +1,8 @@
 var url,additionURL,subtractionURL
 function setGlobals() {
     url = window.location.href;
-    additionURL = chrome.extension.getURL("images/addition1.png");
-    subtractionURL = chrome.extension.getURL("images/clear.png");
+    additionURL = chrome.extension.getURL("images/add.png");
+    subtractionURL = chrome.extension.getURL("images/remove.png");
 }
 //Maybe add scrapeName function so that the popup has the name as well as teh id, but i dont think thats really necessary
 function scrapeID() {
@@ -18,13 +18,17 @@ function setSymbol() {
     chrome.storage.local.get(["wcaData"], function(items) {
         var ids = items.wcaData;
         if (ids==[]) {
+            console.log("empty");
             document.getElementById("--extension-button-add").src=additionURL;
         }
         else {
+            console.log("not empty");
             if (ids.indexOf(scrapeID())==-1) {
+                console.log("Shitter is in here");
                 document.getElementById("--extension-button-add").src=additionURL;
             }
             else {
+                console.log("Shitter is NOT here");
                 document.getElementById("--extension-button-add").src=subtractionURL;
             }
         }
@@ -39,8 +43,10 @@ function addName() {
     chrome.storage.local.get(["wcaData"], function(items) {
         currentIDS = items.wcaData;
         console.log(currentIDS);
-        if (wcaID in currentIDS) {
-            currentIds = currentIds.splice(currentIDS.indexOf(wcaID),1);
+        if (currentIDS.indexOf(wcaID)!=-1) {
+            var index = currentIDS.indexOf(wcaID);
+            currentIDS.splice(index,1);
+            console.log(currentIDS);
             console.log("Removing entry");
             document.getElementById("--extension-button-add").src=additionURL;
         }
