@@ -23,7 +23,7 @@ function compareStats() {
             alert("Too few people, mininmum: 2");
         }
         else {
-            open(chrome.extension.getURL("views/stats/stats.html"));
+            open(chrome.extension.getURL("views/react-test/index.html"));
         }
     })
    
