@@ -1,4 +1,4 @@
 .DS_Store
 .vscode
 src/views/react-test/node_modules
-src/views/react-test/TODO.node_modules
+src/views/react-test/TODO.md

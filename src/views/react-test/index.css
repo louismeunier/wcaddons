@@ -25,3 +25,9 @@ td {
     font-style: italic;
     font-weight: bold;
 }
+.avatar:hover {
+    cursor: pointer;
+}
+.name:hover {
+    cursor: pointer;
+}

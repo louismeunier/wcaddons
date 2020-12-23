@@ -12,7 +12,7 @@ class Meta extends React.Component {
               <h1 onClick = {()=>open(this.props.data.url)} className="name">{this.props.data.name}</h1>
               <img height="25px" className="country" src={`https://www.countryflags.io/${this.props.data.country_iso2}/flat/64.png`}></img>
               <h2 className="wca_id">{this.props.data.wca_id}</h2>
-              <img onClick = {()=>open(this.props.data.avatar.url)} height="75px" src={this.props.data.avatar.url}></img>
+              <img className = "avatar" onClick = {()=>open(this.props.data.avatar.url)} height="75px" src={this.props.data.avatar.url}></img>
           </th>
       )
     }

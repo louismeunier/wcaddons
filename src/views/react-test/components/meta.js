@@ -39,7 +39,7 @@ var Meta = function (_React$Component) {
             { className: "wca_id" },
             this.props.data.wca_id
           ),
-          React.createElement("img", { onClick: function onClick() {
+          React.createElement("img", { className: "avatar", onClick: function onClick() {
               return open(_this2.props.data.avatar.url);
             }, height: "75px", src: this.props.data.avatar.url })
         );

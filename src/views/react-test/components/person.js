@@ -18,7 +18,8 @@ var Person = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Person.__proto__ || Object.getPrototypeOf(Person)).call(this, props));
 
-        _this.state = { data: [], events: ["222", "333", "444", "555", "666", "777", "333bf", "333fm", "333oh", "clock", "minx", "pyram", "skewb", "sq1", "444bf", "555bf", "333mbf"] };
+        _this.state = { data: [], noPeople: null, events: ["222", "333", "444", "555", "666", "777", "333bf", "333fm", "333oh", "clock", "minx", "pyram", "skewb", "sq1", "444bf", "555bf", "333mbf"] };
+        //Would probably be best to move events to a global variable? Not sure
         _this.callAPI();
         return _this;
     }
@@ -30,6 +31,7 @@ var Person = function (_React$Component) {
 
             chrome.storage.local.get(["wcaData"], function (items) {
                 var wcaIDs = items.wcaData;
+                _this2.setState({ noPeople: wcaIDs.length });
                 wcaIDs.forEach(function (id) {
                     axios.get("https://www.worldcubeassociation.org/api/v0/persons/" + id).then(function (response) {
                         var data = response.data;
@@ -44,6 +46,32 @@ var Person = function (_React$Component) {
                     });
                 });
             });
+        }
+    }, {
+        key: "format",
+        value: function format(type) {
+            var event, eventCol, eventForm, id;
+            for (var i = 0; i < this.state.events.length; i++) {
+                eventForm = [];
+                event = this.state.events[i];
+                eventCol = document.getElementsByClassName(event + type);
+                if (eventCol.length != this.state.noPeople) return;
+
+                for (var j = 0; j < eventCol.length; j++) {
+                    parseFloat(eventCol[j].innerText) ? eventForm.push(parseFloat(eventCol[j].innerText)) : eventForm.push(Infinity);
+                };
+
+                if (eventForm.indexOf(Math.min.apply(Math, _toConsumableArray(eventForm))) != -1) {
+                    id = eventCol[eventForm.indexOf(Math.min.apply(Math, _toConsumableArray(eventForm)))].getAttribute("id");
+                    document.getElementById(id).style.color = "orange";
+                }
+            }
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            this.format("single");
+            this.format("average");
         }
     }, {
         key: "render",

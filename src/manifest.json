@@ -29,5 +29,5 @@
     },
     "options_page": "views/options/options.html",
     "manifest_version": 2,
-    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table.min https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://unpkg.com/react@17/umd/react.development.js https://unpkg.com/react-dom@17/umd/react-dom.development.js; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://unpkg.com/react-dom@17/umd/react-dom.production.min.js https://unpkg.com/react@17/umd/react.production.min.js https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table.min https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://unpkg.com/react@17/umd/react.development.js https://unpkg.com/react-dom@17/umd/react-dom.development.js; object-src 'self'"
   }

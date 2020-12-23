@@ -1,15 +1,16 @@
 'use strict';
-
 class Person extends React.Component {
   constructor(props) {
       super(props);
-      this.state = { data: [], events: ["222","333","444","555","666","777","333bf","333fm","333oh","clock","minx","pyram","skewb","sq1","444bf","555bf","333mbf"]};
+      this.state = { data: [], noPeople: null, events: ["222","333","444","555","666","777","333bf","333fm","333oh","clock","minx","pyram","skewb","sq1","444bf","555bf","333mbf"]};
+      //Would probably be best to move events to a global variable? Not sure
       this.callAPI();
   }
 
   callAPI() {
     chrome.storage.local.get(["wcaData"], (items) => {
         var wcaIDs = items.wcaData;
+        this.setState({ noPeople: wcaIDs.length });
         wcaIDs.forEach(id => {
             axios.get(`https://www.worldcubeassociation.org/api/v0/persons/${id}`)
                 .then((response) => {
@@ -28,6 +29,28 @@ class Person extends React.Component {
     })
   }
 
+  format(type) {
+    var event,eventCol,eventForm,id;
+    for (var i=0;i<this.state.events.length;i++) {
+        eventForm=[];
+        event=this.state.events[i];
+        eventCol=document.getElementsByClassName(event+type);
+        if (eventCol.length!=this.state.noPeople) return;
+
+        for (var j=0;j<eventCol.length;j++) {parseFloat(eventCol[j].innerText) ? eventForm.push(parseFloat(eventCol[j].innerText)):eventForm.push(Infinity)};
+        
+        if (eventForm.indexOf(Math.min(...eventForm))!=-1) {
+            id = eventCol[eventForm.indexOf(Math.min(...eventForm))].getAttribute("id");
+            document.getElementById(id).style.color = "orange";
+        }
+    }
+  }
+
+  componentDidUpdate() {
+    this.format("single");
+    this.format("average");
+  }
+  
   render() {
     return (
         <table >

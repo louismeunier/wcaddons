@@ -14,7 +14,10 @@ var Result = function (_React$Component) {
     function Result(props) {
         _classCallCheck(this, Result);
 
-        return _possibleConstructorReturn(this, (Result.__proto__ || Object.getPrototypeOf(Result)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Result.__proto__ || Object.getPrototypeOf(Result)).call(this, props));
+
+        _this.eventFormatting = {};
+        return _this;
     }
 
     _createClass(Result, [{
@@ -25,12 +28,12 @@ var Result = function (_React$Component) {
                 null,
                 React.createElement(
                     "td",
-                    null,
+                    { id: this.props.person.person.wca_id + "-" + this.props.event + "-single", className: this.props.event + "single" },
                     this.props.person.personal_records[this.props.event] != undefined && this.props.person.personal_records[this.props.event]["single"] != undefined ? this.props.person.personal_records[this.props.event]["single"].best / 100 : "-"
                 ),
                 React.createElement(
                     "td",
-                    null,
+                    { id: this.props.person.person.wca_id + "-" + this.props.event + "-average", className: this.props.event + "average" },
                     this.props.person.personal_records[this.props.event] != undefined && this.props.person.personal_records[this.props.event]["average"] != undefined ? this.props.person.personal_records[this.props.event]["average"].best / 100 : "-"
                 )
             );
