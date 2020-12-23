@@ -1,0 +1,27 @@
+@import "../themes.css";
+
+body {
+    color: slategray;
+    font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+#person-wrapper {
+    display: flex;
+    overflow-y: hidden;
+    width: 100%;
+}
+table {
+    height: 100%;
+    width: 100%;
+}
+th {
+    max-width: 25px;
+}
+td {
+    text-align: center;
+    max-width: 50px;
+}
+.type-header {
+    font-style: italic;
+    font-weight: bold;
+}

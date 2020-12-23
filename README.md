@@ -1,4 +1,5 @@
 ## wcaddons
+[![slides-badge](https://rawgit.com/kentcdodds/custom-badges/master/badges/slides.svg)](http://example.com/your-slides)
 
 A Chrome extension that adds extra functionality to the WCA website (and more to come!)
 

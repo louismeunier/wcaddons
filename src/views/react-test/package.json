@@ -1,0 +1,13 @@
+{
+  "name": "react-test",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx babel --watch src --out-dir . --presets react-app/prod"
+  },
+  "author": "louismeunier",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  }
+}
