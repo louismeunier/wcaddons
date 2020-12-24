@@ -1,6 +1,7 @@
 :root {
     --main-bkd:black;
-    --font-color: green;
-    --second-bkd: gray;
+    --font-color:#2ecc71;
+    --second-bkd: black;
     --highlight-color:yellow;
+    --logo-color:#2c3e50;
 }

@@ -8,37 +8,28 @@ function adjustLogo() {
         console.log("pass");
     }
 }
-
+function themeBase(theme) {
+    var themeElement = document.createElement("h2");
+    themeElement.innerText = theme.toUpperCase();
+    themeElement.id = theme;
+    themeElement.className = "theme-selector";
+    themeElement.onclick = ()=>setNewTheme(themeElement.id);
+    return themeElement;
+    
+}
 function setThemeOptions() {
     var options = document.getElementById("options");
     var themeDiv = document.createElement("div");
 
-    //insert new theme names here
-    var lightDefault = document.createElement("h2");
-    lightDefault.innerText = "SET LIGHT THEME";
-    lightDefault.id = "lightDefault";
-    lightDefault.onclick = ()=>setNewTheme(lightDefault.id);
-    options.insertAdjacentElement("afterbegin",lightDefault);
-
-    var darkDefault = document.createElement("h2");
-    darkDefault.innerText = "SET DARK THEME";
-    darkDefault.id = "darkDefault";
-    darkDefault.onclick = ()=>setNewTheme(darkDefault.id);
-    options.insertAdjacentElement("afterbegin", darkDefault);
-
-    var monokai = document.createElement("h2");
-    monokai.innerText = "SET MONOKAI THEME";
-    monokai.id = "monokai";
-    monokai.onclick = ()=>setNewTheme(monokai.id);
-    options.insertAdjacentElement("afterbegin", monokai);
-
+    let themes = ["lightDefault","darkDefault","monokai","terminal","cstimerDefault"];
+    for (var i=0;i<themes.length;i++) {
+        options.insertAdjacentElement("afterbegin",themeBase(themes[i]));
+    }
 }
 
 var versionNumber = chrome.runtime.getManifest().version;
 document.getElementById("version").innerText+=versionNumber;
 document.getElementById("logo").src=chrome.extension.getURL("images/logo.png");
-//document.getElementById("theme-indicator").onclick=toggleTheme;
-//document.getElementById("github").src=chrome.extension.getURL("images/github.png");
 document.addEventListener("DOMContentLoaded", ()=>{
     setInitialTheme();
     setThemeOptions();

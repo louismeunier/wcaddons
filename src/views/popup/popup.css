@@ -6,6 +6,7 @@ body {
     background-color: var(--main-bkd);
     color: var(--font-color);
     font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    transition: 0.1s;
 }
 
 table {
@@ -39,10 +40,10 @@ h1 {
 #app-name {
     top:0;
     font-size: 40px;
-    color: #3498db;
+    color: var(--logo-color);
     font-style: italic;
     text-decoration: none;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #footer {

@@ -2,6 +2,7 @@ body {
     background-color: var(--main-bkd);
     color: var(--font-color);
     font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    transition: 0.5s;
 }
 
 #person-wrapper {

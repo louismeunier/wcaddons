@@ -2,6 +2,7 @@ body {
     font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
     background-color: var(--main-bkd);
     color: var(--font-color);
+    transition: 0.5s;
 }
 #header {
     height: auto;
@@ -16,7 +17,7 @@ body {
 }
 #app-name {
     font-size: 75px;
-    color:#3498db;
+    color: var(--logo-color);
 }
 #description {
     margin-top: 0;
@@ -24,13 +25,14 @@ body {
 }
 #disclaimer {
     font-size: 15px;
+    position: absolute;
 }
 a {
     text-decoration: none;
     color: slategray;
 }
 #options {
-    margin-top: 320px;
+    margin-top: 520px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -48,16 +50,16 @@ a {
     font-size: 25px;
 }
 #disclaimer {
-    position: absolute;
+    position: fixed;
     color: var(--highlight-color);
     margin-bottom: 10px;
     bottom: 0;
 }
-#theme {
-    position: absolute;
-    bottom: 0;
-    right:0;
-    margin-right: 10px;
-    margin-bottom: 10px;
-
+.theme-selector {
+    transition: 0.5s;
+}
+.theme-selector:hover {
+    cursor: pointer;
+    font-style: italic;
+    
 }
