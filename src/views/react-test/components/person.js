@@ -57,11 +57,9 @@ var Person = function (_React$Component) {
                 event = this.state.events[i];
                 eventCol = document.getElementsByClassName(event + type);
                 if (eventCol.length != this.state.noPeople) return;
-
                 for (var j = 0; j < eventCol.length; j++) {
-                    parseFloat(eventCol[j].innerText) ? eventForm.push(parseFloat(eventCol[j].innerText)) : eventForm.push(Infinity);
-                };
-
+                    eventForm.push(eventCol[j].innerText.fromMMSSMM());
+                }
                 if (eventForm.indexOf(Math.min.apply(Math, _toConsumableArray(eventForm))) != -1) {
                     id = eventCol[eventForm.indexOf(Math.min.apply(Math, _toConsumableArray(eventForm)))].getAttribute("id");
                     document.getElementById(id).style.color = "orange";
