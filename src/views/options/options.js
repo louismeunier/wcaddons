@@ -9,41 +9,38 @@ function adjustLogo() {
     }
 }
 
-function setTheme() {
-    chrome.storage.local.get(["themePref"], function(items) {
-        var theme = items.themePref;
-        if (theme=="light") {
-            document.getElementById("theme-indicator").src = chrome.extension.getURL("images/sun.png");
-            
-            document.getElementsByTagName("body")[0].className="theme-light";
-        }
-        else if (theme=="dark") {
-            document.getElementById("theme-indicator").src = chrome.extension.getURL("images/moon.png");
- 
-            document.getElementsByTagName("body")[0].className="theme-dark";
-        }
-    })
+function setThemeOptions() {
+    var options = document.getElementById("options");
+    var themeDiv = document.createElement("div");
+
+    //insert new theme names here
+    var lightDefault = document.createElement("h2");
+    lightDefault.innerText = "SET LIGHT THEME";
+    lightDefault.id = "lightDefault";
+    lightDefault.onclick = ()=>setNewTheme(lightDefault.id);
+    options.insertAdjacentElement("afterbegin",lightDefault);
+
+    var darkDefault = document.createElement("h2");
+    darkDefault.innerText = "SET DARK THEME";
+    darkDefault.id = "darkDefault";
+    darkDefault.onclick = ()=>setNewTheme(darkDefault.id);
+    options.insertAdjacentElement("afterbegin", darkDefault);
+
+    var monokai = document.createElement("h2");
+    monokai.innerText = "SET MONOKAI THEME";
+    monokai.id = "monokai";
+    monokai.onclick = ()=>setNewTheme(monokai.id);
+    options.insertAdjacentElement("afterbegin", monokai);
+
 }
 
-function toggleTheme() {
-    chrome.storage.local.get(["themePref"], function(items) {
-        var theme = items.themePref;
-
-        if (theme=="light") {
-            theme = "dark";
-        }
-        else if (theme=="dark") {
-            theme = "light";
-        }
-        chrome.storage.local.set({"themePref":theme},function(items) {
-            console.log("Theme set.");
-            setTheme();
-        })
-    })
-}
 var versionNumber = chrome.runtime.getManifest().version;
 document.getElementById("version").innerText+=versionNumber;
 document.getElementById("logo").src=chrome.extension.getURL("images/logo.png");
-document.getElementById("theme-indicator").onclick=toggleTheme;
+//document.getElementById("theme-indicator").onclick=toggleTheme;
 //document.getElementById("github").src=chrome.extension.getURL("images/github.png");
-document.addEventListener("DOMContentLoaded", setTheme);
+document.addEventListener("DOMContentLoaded", ()=>{
+    setInitialTheme();
+    setThemeOptions();
+    }
+);  

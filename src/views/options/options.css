@@ -1,5 +1,3 @@
-@import url("../themes.css");
-
 body {
     font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
     background-color: var(--main-bkd);

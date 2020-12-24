@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(function() {
         newPref = items.themePref;
       }
       else {
-        newPref = "light";
+        newPref = "lightDefault";
       }
       chrome.storage.local.set({"themePref":newPref},function(items) {
         console.log("Set theme!");

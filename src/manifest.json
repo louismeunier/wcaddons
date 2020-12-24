@@ -5,9 +5,7 @@
     "permissions":["declarativeContent","storage","tabs","https://www.worldcubeassociation.org/*"],
     "web_accessible_resources": [
       "images/*.*",
-      "views/stats/*.*",
-      "views/themes.css",
-      "views/build/"
+      "views/stats/*.*"
     ],
     "background": {
       "scripts": ["background/background.js"],
