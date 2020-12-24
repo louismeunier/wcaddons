@@ -1,10 +1,12 @@
 'use strict';
+
 class Person extends React.Component {
   constructor(props) {
       super(props);
       this.state = { data: [], noPeople: null, events: ["222","333","444","555","666","777","333bf","333fm","333oh","clock","minx","pyram","skewb","sq1","444bf","555bf","333mbf"]};
       //Would probably be best to move events to a global variable? Not sure
       this.callAPI();
+      
   }
 
   callAPI() {
@@ -49,6 +51,7 @@ class Person extends React.Component {
   componentDidUpdate() {
     this.format("single");
     this.format("average");
+    setInitialTheme();
   }
   
   render() {

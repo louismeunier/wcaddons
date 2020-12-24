@@ -21,6 +21,7 @@ var Person = function (_React$Component) {
         _this.state = { data: [], noPeople: null, events: ["222", "333", "444", "555", "666", "777", "333bf", "333fm", "333oh", "clock", "minx", "pyram", "skewb", "sq1", "444bf", "555bf", "333mbf"] };
         //Would probably be best to move events to a global variable? Not sure
         _this.callAPI();
+
         return _this;
     }
 
@@ -72,6 +73,7 @@ var Person = function (_React$Component) {
         value: function componentDidUpdate() {
             this.format("single");
             this.format("average");
+            setInitialTheme();
         }
     }, {
         key: "render",

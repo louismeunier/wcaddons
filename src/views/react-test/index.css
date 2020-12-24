@@ -1,7 +1,6 @@
-@import "../themes.css";
-
 body {
-    color: slategray;
+    background-color: var(--main-bkd);
+    color: var(--font-color);
     font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
@@ -24,6 +23,9 @@ td {
 .type-header {
     font-style: italic;
     font-weight: bold;
+}
+.name {
+    color: var(--highlight-color);
 }
 .avatar:hover {
     cursor: pointer;
