@@ -18,19 +18,37 @@ var Meta = function (_React$Component) {
   }
 
   _createClass(Meta, [{
+    key: "removePerson",
+    value: function removePerson(id) {
+      chrome.storage.local.get(["wcaData"], function (items) {
+        var currentIDS = items.wcaData;
+        if (currentIDS.indexOf(id) != -1) {
+          var index = currentIDS.indexOf(id);
+          currentIDS.splice(index, 1);
+          console.log("Removing entry");
+        }
+        chrome.storage.local.set({ "wcaData": currentIDS }, function (items) {
+          chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.update(tabs[0].id, { url: tabs[0].url });
+          });
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       if (this.props.data) {
+
         return React.createElement(
           "th",
           { colSpan: "2", className: "meta" },
           React.createElement(
             "h1",
             { onClick: function onClick() {
-                return open(_this2.props.data.url);
-              }, className: "name" },
+                return _this2.removePerson(_this2.props.data.wca_id);
+              }, className: "name top" },
             this.props.data.name
           ),
           React.createElement("img", { height: "25px", className: "country", src: "https://www.countryflags.io/" + this.props.data.country_iso2 + "/flat/64.png" }),

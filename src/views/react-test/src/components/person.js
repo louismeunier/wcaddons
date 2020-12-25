@@ -4,9 +4,8 @@ class Person extends React.Component {
   constructor(props) {
       super(props);
       this.state = { data: [], noPeople: null, events: ["222","333","444","555","666","777","333bf","333fm","333oh","clock","minx","pyram","skewb","sq1","444bf","555bf","333mbf"]};
-      //Would probably be best to move events to a global variable? Not sure
       this.callAPI();
-      
+      //would like to add event listener here for chrome storage change to reload the stats page, but my fisrt attempt broke everything
   }
 
   callAPI() {
@@ -55,23 +54,30 @@ class Person extends React.Component {
   }
   
   render() {
-    return (
-        <table >
-            <thead>
-                <tr>
-                    <td id="whitespace"></td>
-                    {this.state.data.map((person,index) => <Meta key={index} data={person.person}/>)}
-                </tr>
-                <tr>
-                    <td className="type-header">events</td>
-                    {this.state.data.map((person,index)=><React.Fragment key={index}><td className="type-header">single</td><td className="type-header">average</td></React.Fragment>)}
-                </tr>
-            </thead>
-            <tbody>
-                {this.state.events.map((event,index) => <tr key={index}><td>{event}</td>{this.state.data.map((person,index)=> <Result key={index} person={person} event={event}/>)}</tr>)}
-            </tbody>
-        </table>
-    )
+    if (this.state.noPeople===0) {
+        return (
+            <h1 id="no-data">No one added to compare!</h1>
+        )
+    }
+    else {
+        return (
+            <table >
+                <thead>
+                    <tr>
+                        <td id="whitespace"></td>
+                        {this.state.data.map((person,index) => <Meta no={this.state.noPeople} key={index} data={person.person}/>)}
+                    </tr>
+                    <tr>
+                        <td className="type-header">events</td>
+                        {this.state.data.map((person,index)=><React.Fragment key={index}><td className="type-header">single</td><td className="type-header">average</td></React.Fragment>)}
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.state.events.map((event,index) => <tr key={index}><td>{event}</td>{this.state.data.map((person,index)=> <Result key={index} person={person} event={event}/>)}</tr>)}
+                </tbody>
+            </table>
+        )
+    }
     }
 }
 
