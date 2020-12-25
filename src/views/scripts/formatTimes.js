@@ -12,7 +12,7 @@ String.prototype.fromMMSSMM = function () {
         var seconds = this.slice(res.indexOf(":")+1,res.indexOf("."));
         var milliseconds = this.slice(res.indexOf(".")+1);
 
-        var raw = (6000*parseInt(minutes))+(100*parseInt(seconds))+(parseInt(milliseconds));
+        var raw = ((6000*parseInt(minutes))+(100*parseInt(seconds))+(parseInt(milliseconds)));
         return raw
     }
 }
