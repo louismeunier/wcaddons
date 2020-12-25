@@ -9,22 +9,28 @@ function adjustLogo() {
     }
 }
 function themeBase(theme) {
-    var themeElement = document.createElement("h2");
-    themeElement.innerText = theme.toUpperCase();
+    var themeElement = document.createElement("div");
+
+    var themeName = document.createElement("h2");
+    themeName.innerText = theme.toUpperCase();
+
     themeElement.id = theme;
+
     themeElement.className = "theme-selector";
+
+    themeElement.insertAdjacentElement("afterbegin",themeName);
     themeElement.onclick = ()=>setNewTheme(themeElement.id);
     return themeElement;
-    
 }
 function setThemeOptions() {
     var options = document.getElementById("options");
     var themeDiv = document.createElement("div");
-
-    let themes = ["lightDefault","darkDefault","monokai","terminal","cstimerDefault"];
+    themeDiv.id="themes";
+    let themes = ["lightDefault","darkDefault","monokai","terminal","cstimer","olivia"];
     for (var i=0;i<themes.length;i++) {
-        options.insertAdjacentElement("afterbegin",themeBase(themes[i]));
+        themeDiv.insertAdjacentElement("afterbegin",themeBase(themes[i]));
     }
+    options.insertAdjacentElement("afterbegin",themeDiv);
 }
 
 var versionNumber = chrome.runtime.getManifest().version;

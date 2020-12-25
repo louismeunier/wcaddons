@@ -33,4 +33,9 @@ td {
 }
 .name:hover {
     cursor: pointer;
+    text-decoration: line-through;
+}
+#no-data {
+    color: var(--highlight-color);
+    text-align: center;
 }
