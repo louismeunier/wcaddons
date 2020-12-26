@@ -50,6 +50,8 @@ a {
     color: var(--highlight-color);
     margin-bottom: 10px;
     bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 .theme-selector {
     background-color: var(--second-bkd);
@@ -67,6 +69,7 @@ a {
     font-style: italic;   
 }
 #themes {
+    margin-top: 20px;
     height: 100px;
     width: 100%;
     display: flex;

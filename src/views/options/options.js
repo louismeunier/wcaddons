@@ -25,6 +25,7 @@ function themeBase(theme) {
 function setThemeOptions() {
     var options = document.getElementById("options");
     var themeDiv = document.createElement("div");
+
     themeDiv.id="themes";
     let themes = ["lightDefault","darkDefault","monokai","terminal","cstimer","olivia"];
     for (var i=0;i<themes.length;i++) {
