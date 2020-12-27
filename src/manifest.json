@@ -4,8 +4,7 @@
     "description": "Features to enchance your worldcubeassociation.org experience",
     "permissions":["declarativeContent","storage","tabs","https://www.worldcubeassociation.org/*"],
     "web_accessible_resources": [
-      "images/*.*",
-      "views/stats/*.*"
+      "images/*.*"
     ],
     "background": {
       "scripts": ["background/background.js"],
@@ -19,12 +18,19 @@
     "page_action": {
         "default_popup": "views/popup/popup.html",
         "default_icon": {
-            "16": "images/logo.png"
-          }
-    },
+          "16":"images/logo.png"
+        },
     "icons": {
-        "16": "images/logo.png"
-    },
+      "16": "images/logo.png",
+      "48": "images/logo.png",
+      "128": "images/logo.png"
+    }
+  },
+  "icons": {
+    "16": "images/logo.png",
+    "48": "images/logo.png",
+    "128": "images/logo.png"
+  },
     "options_page": "views/options/options.html",
     "manifest_version": 2,
     "content_security_policy": "script-src 'self' https://unpkg.com/react-dom@17/umd/react-dom.production.min.js https://unpkg.com/react@17/umd/react.production.min.js https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table.min https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://unpkg.com/react@17/umd/react.development.js https://unpkg.com/react-dom@17/umd/react-dom.development.js; object-src 'self'"
