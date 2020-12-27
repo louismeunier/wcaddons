@@ -3,7 +3,7 @@
 class Person extends React.Component {
   constructor(props) {
       super(props);
-      this.state = { data: [], noPeople: null, events: ["222","333","444","555","666","777","333bf","333fm","333oh","clock","minx","pyram","skewb","sq1","444bf","555bf","333mbf"]};
+      this.state = {  data: [], noPeople: null, events: ["222","333","444","555","666","777","333bf","333fm","333oh","clock","minx","pyram","skewb","sq1","444bf","555bf","333mbf"]};
       this.callAPI();
       //would like to add event listener here for chrome storage change to reload the stats page, but my fisrt attempt broke everything
   }
@@ -19,7 +19,7 @@ class Person extends React.Component {
                     this.setState(prevState => ({ data: [...prevState.data, data]}));
                 })
                 .catch((error) => {
-                    console.log("Error!");
+                    //console.log("Error!");
                     return error;
                 })
                 .then(()=>{
@@ -40,7 +40,7 @@ class Person extends React.Component {
         for (var j=0;j<eventCol.length;j++) {
            eventForm.push(eventCol[j].innerText.fromMMSSMM());
         }
-        if (eventForm.indexOf(Math.min(...eventForm))!=-1) {
+        if (eventForm.indexOf(Math.min(...eventForm))!=-1 && Math.min(...eventForm)!=Infinity) {
             id = eventCol[eventForm.indexOf(Math.min(...eventForm))].getAttribute("id");
             document.getElementById(id).style.color = "orange";
         }
@@ -48,6 +48,7 @@ class Person extends React.Component {
   }
 
   componentDidUpdate() {
+    //console.log("Updated");
     this.format("single");
     this.format("average");
     setInitialTheme();
@@ -56,12 +57,16 @@ class Person extends React.Component {
   render() {
     if (this.state.noPeople===0) {
         return (
-            <h1 id="no-data">No one added to compare!</h1>
+            <React.Fragment>
+                <h1 id="no-data">No one added to compare!</h1>
+                <AddPerson/>
+            </React.Fragment>
         )
     }
     else {
         return (
-            <table >
+            <React.Fragment>
+            <table id="comparison">
                 <thead>
                     <tr>
                         <td id="whitespace"></td>
@@ -73,9 +78,11 @@ class Person extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.events.map((event,index) => <tr key={index}><td>{event}</td>{this.state.data.map((person,index)=> <Result key={index} person={person} event={event}/>)}</tr>)}
+                    {this.state.events.map((event,index) => <tr key={index}><td className="event">{event}</td>{this.state.data.map((person,index)=> <Result key={index} person={person} event={event}/>)}</tr>)}
                 </tbody>
             </table>
+            <AddPerson/>
+            </React.Fragment>
         )
     }
     }
