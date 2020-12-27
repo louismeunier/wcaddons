@@ -8,13 +8,15 @@
     <title>wcaddons/stats</title>
 </head>
 <body>
-  
+  <div id="header">
+    <h1>Head-to-Head</h1>
+  </div>
   <div id="stats"></div>
 
-    <!-- PRODUCTION React.js CDNs -->
-    <!--
+    <!-- PRODUCTION React.js CDNs 
+    
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>\
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     -->
     <!-- Optomized React.js CDNs -->
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
@@ -22,8 +24,12 @@
     <!-- Axios CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" crossorigin></script>
     <!-- Load React components -->
+    <script src="components/options.js"></script>
     <script src="../scripts/formatTimes.js"></script>
     <script src="../scripts/setThemes.js"></script>
+    
+    <script src="components/searchResult.js"></script>
+    <script src="components/addPerson.js"></script>
     <script src="components/result.js"></script>
     <script src="components/meta.js"></script>
     <script src="components/person.js"></script>
