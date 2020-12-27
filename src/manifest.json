@@ -1,8 +1,8 @@
 {
     "name": "wcaddons",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Features to enchance your worldcubeassociation.org experience",
-    "permissions":["declarativeContent","storage","tabs","https://www.worldcubeassociation.org/*"],
+    "permissions":["storage","tabs"],
     "web_accessible_resources": [
       "images/*.*"
     ],
@@ -15,7 +15,7 @@
         "css":["content/content.css"],
         "matches":["https://www.worldcubeassociation.org/persons/*"]
     }],
-    "page_action": {
+    "browser_action": {
         "default_popup": "views/popup/popup.html",
         "default_icon": {
           "16":"images/logo.png"
@@ -33,5 +33,5 @@
   },
     "options_page": "views/options/options.html",
     "manifest_version": 2,
-    "content_security_policy": "script-src 'self' https://unpkg.com/react-dom@17/umd/react-dom.production.min.js https://unpkg.com/react@17/umd/react.production.min.js https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table.min https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://unpkg.com/react@17/umd/react.development.js https://unpkg.com/react-dom@17/umd/react-dom.development.js; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://unpkg.com/react-dom@17/umd/react-dom.production.min.js https://unpkg.com/react@17/umd/react.production.min.js https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://unpkg.com/react@17/umd/react.development.js https://unpkg.com/react-dom@17/umd/react-dom.development.js; object-src 'self'"
   }

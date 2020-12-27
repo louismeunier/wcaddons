@@ -17,13 +17,4 @@ chrome.runtime.onInstalled.addListener(function() {
       })
     })
     open(chrome.extension.getURL("views/options/options.html"));
-    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-      chrome.declarativeContent.onPageChanged.addRules([{
-        conditions: [new chrome.declarativeContent.PageStateMatcher({
-          pageUrl: {hostEquals: 'www.worldcubeassociation.org'},
-        })
-        ],
-            actions: [new chrome.declarativeContent.ShowPageAction()]
-      }]);
-    });
   });
