@@ -1,8 +1,33 @@
+function removeName(clicked) {
+    var idToRemove = this.id;
+    chrome.storage.local.get(["wcaData"],function(items) {
+        var current = items.wcaData;
+        current.splice(current.indexOf(idToRemove,1));
+        console.log(current);
+        chrome.storage.local.set({"wcaData":current},function(items) {
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
+            });
+            window.close();
+        })
+    })
+}
 function scrapeData() { 
     chrome.storage.local.get(["wcaData"], function(items) {
         var ids = items.wcaData;
-        console.log(ids);
-        ids.forEach(id=>document.getElementById('wca-ids-body').innerHTML+=`<tr><td class=\"wca-id-data\"> ${id}</td></tr>`);
+        var text;
+        var idsBody = document.getElementById("wca-ids-body");
+        for (var i=0;i<ids.length;i++) {
+            var row = document.createElement("tr");
+            var data = document.createElement("td");
+            text = ids[i];
+            data.innerText = text;
+            data.className = "wca-id-data";
+            data.id = text;
+            data.onclick=removeName;
+            row.appendChild(data);
+            idsBody.appendChild(row);
+        }
     });
 }
 
