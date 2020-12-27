@@ -7,7 +7,6 @@ function setNewTheme(name) {
 
 function setInitialTheme() {
     chrome.storage.local.get(["themePref"], function(items) {
-        console.log("Theme init!");
         var theme = items.themePref;
         var themeLink = document.getElementById("theme");
         themeLink.href = chrome.extension.getURL(`views/themes/${theme}.css`); 
@@ -15,10 +14,8 @@ function setInitialTheme() {
 }
 
 function storageReloaded(changes,area) {
-    console.log("Hello");
     if (area=="local" && Object.keys(changes).indexOf("themePref")!=-1) {
         setInitialTheme();
-        console.log("Changed");
     }
 }
 

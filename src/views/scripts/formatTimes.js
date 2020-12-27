@@ -1,7 +1,6 @@
 String.prototype.fromMMSSMM = function () {
     var res = this;
     if (res=="-") {
-        console.log("NONE");
         return Infinity;
     }
     else if (res.indexOf(":")==-1) {

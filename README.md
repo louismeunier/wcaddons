@@ -10,4 +10,4 @@ Accreditation for all icons used throughout the extension is available at [src/i
 
 ### current features
 
- - Compare a number of competitors against each other (in progress)
+ - Compare a number of competitors against each other (~~in progress~~)

@@ -25,9 +25,10 @@ var Meta = function (_React$Component) {
         if (currentIDS.indexOf(id) != -1) {
           var index = currentIDS.indexOf(id);
           currentIDS.splice(index, 1);
-          console.log("Removing entry");
+          //console.log("Removing entry");
         }
         chrome.storage.local.set({ "wcaData": currentIDS }, function (items) {
+          //I don't want to have to reload here, but I can't get <Person/> to rerender on storage change...
           chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             chrome.tabs.update(tabs[0].id, { url: tabs[0].url });
           });
