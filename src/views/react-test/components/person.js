@@ -18,7 +18,7 @@ var Person = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Person.__proto__ || Object.getPrototypeOf(Person)).call(this, props));
 
-        _this.state = { data: [], noPeople: null, events: ["222", "333", "444", "555", "666", "777", "333bf", "333fm", "333oh", "clock", "minx", "pyram", "skewb", "sq1", "444bf", "555bf", "333mbf"] };
+        _this.state = { data: [], noPeople: 0, events: ["222", "333", "444", "555", "666", "777", "333bf", "333fm", "333oh", "clock", "minx", "pyram", "skewb", "sq1", "444bf", "555bf", "333mbf"] };
         _this.callAPI();
         //would like to add event listener here for chrome storage change to reload the stats page, but my fisrt attempt broke everything
         return _this;
@@ -84,76 +84,80 @@ var Person = function (_React$Component) {
                     null,
                     React.createElement(
                         "h1",
-                        { id: "no-data" },
+                        null,
                         "No one added to compare!"
                     ),
                     React.createElement(AddPerson, null)
                 );
             } else {
-                return React.createElement(
-                    React.Fragment,
-                    null,
-                    React.createElement(
-                        "table",
-                        { id: "comparison" },
+                if (this.state.noPeople == this.state.data.length) {
+                    return React.createElement(
+                        React.Fragment,
+                        null,
                         React.createElement(
-                            "thead",
-                            null,
+                            "table",
+                            { id: "comparison" },
                             React.createElement(
-                                "tr",
-                                null,
-                                React.createElement("td", { id: "whitespace" }),
-                                this.state.data.map(function (person, index) {
-                                    return React.createElement(Meta, { no: _this3.state.noPeople, key: index, data: person.person });
-                                })
-                            ),
-                            React.createElement(
-                                "tr",
+                                "thead",
                                 null,
                                 React.createElement(
-                                    "td",
-                                    { className: "type-header" },
-                                    "events"
+                                    "tr",
+                                    null,
+                                    React.createElement("td", { id: "whitespace" }),
+                                    this.state.data.map(function (person, index) {
+                                        return React.createElement(Meta, { no: _this3.state.noPeople, key: index, data: person.person });
+                                    })
                                 ),
-                                this.state.data.map(function (person, index) {
+                                React.createElement(
+                                    "tr",
+                                    null,
+                                    React.createElement(
+                                        "td",
+                                        { className: "type-header" },
+                                        "events"
+                                    ),
+                                    this.state.data.map(function (person, index) {
+                                        return React.createElement(
+                                            React.Fragment,
+                                            { key: index },
+                                            React.createElement(
+                                                "td",
+                                                { className: "type-header" },
+                                                "single"
+                                            ),
+                                            React.createElement(
+                                                "td",
+                                                { className: "type-header" },
+                                                "average"
+                                            )
+                                        );
+                                    })
+                                )
+                            ),
+                            React.createElement(
+                                "tbody",
+                                null,
+                                this.state.events.map(function (event, index) {
                                     return React.createElement(
-                                        React.Fragment,
+                                        "tr",
                                         { key: index },
                                         React.createElement(
                                             "td",
-                                            { className: "type-header" },
-                                            "single"
+                                            { className: "event" },
+                                            event
                                         ),
-                                        React.createElement(
-                                            "td",
-                                            { className: "type-header" },
-                                            "average"
-                                        )
+                                        _this3.state.data.map(function (person, index) {
+                                            return React.createElement(Result, { key: index, person: person, event: event });
+                                        })
                                     );
                                 })
                             )
                         ),
-                        React.createElement(
-                            "tbody",
-                            null,
-                            this.state.events.map(function (event, index) {
-                                return React.createElement(
-                                    "tr",
-                                    { key: index },
-                                    React.createElement(
-                                        "td",
-                                        { className: "event" },
-                                        event
-                                    ),
-                                    _this3.state.data.map(function (person, index) {
-                                        return React.createElement(Result, { key: index, person: person, event: event });
-                                    })
-                                );
-                            })
-                        )
-                    ),
-                    React.createElement(AddPerson, null)
-                );
+                        React.createElement(AddPerson, null)
+                    );
+                } else {
+                    return React.createElement(Loading, null);
+                }
             }
         }
     }]);

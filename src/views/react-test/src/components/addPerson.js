@@ -3,7 +3,7 @@
 class AddPerson extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = { value: '', submitted: false };
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +16,7 @@ class AddPerson extends React.Component {
       }
     
       handleSubmit(event) {
-//this.state.value
+        this.setState({ submitted: true });
         axios.get("https://www.worldcubeassociation.org/api/v0/search/users?q="+this.state.value)
         .then((response) => {
             var data = response.data;
@@ -28,6 +28,7 @@ class AddPerson extends React.Component {
         })
         .then(()=>{
             console.log("API called");
+            this.setState({ submitted: false });
         })
         event.preventDefault();
       }
@@ -43,6 +44,17 @@ class AddPerson extends React.Component {
           );
         }
         else {
+          if (this.state.submitted) {
+            return (
+              <div id="search">
+                <form onSubmit={this.handleSubmit}>
+                  <input id="add-input" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search by Name/WCA ID"/>
+              </form>
+                <Loading/>
+              </div>
+            )
+          }
+          else {
           if (this.state.result.length!=0) {
             return (
               <div id="search">
@@ -63,6 +75,7 @@ class AddPerson extends React.Component {
               </div>
             )
           }
+        }
         }
       }
   }

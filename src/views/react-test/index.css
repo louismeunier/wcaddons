@@ -134,3 +134,17 @@ form {
 .add-result:hover {
     cursor: pointer;
 }
+#loading {
+    width: 100%;
+    position: absolute;
+    left:0;
+    right:0;
+    text-align: center;
+}
+#loading-gif  {
+    margin-top: 50px;
+    height: 128px;
+}
+#indepth {
+    width:100%;
+}

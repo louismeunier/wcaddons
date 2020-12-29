@@ -3,7 +3,7 @@
 class Person extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {  data: [], noPeople: null, events: ["222","333","444","555","666","777","333bf","333fm","333oh","clock","minx","pyram","skewb","sq1","444bf","555bf","333mbf"]};
+      this.state = {  data: [], noPeople: 0, events: ["222","333","444","555","666","777","333bf","333fm","333oh","clock","minx","pyram","skewb","sq1","444bf","555bf","333mbf"]};
       this.callAPI();
       //would like to add event listener here for chrome storage change to reload the stats page, but my fisrt attempt broke everything
   }
@@ -24,6 +24,7 @@ class Person extends React.Component {
                 })
                 .then(()=>{
                     console.log("API called");
+
                 })
         });
         
@@ -58,32 +59,39 @@ class Person extends React.Component {
     if (this.state.noPeople===0) {
         return (
             <React.Fragment>
-                <h1 id="no-data">No one added to compare!</h1>
+                <h1>No one added to compare!</h1>
                 <AddPerson/>
             </React.Fragment>
         )
     }
     else {
-        return (
-            <React.Fragment>
-            <table id="comparison">
-                <thead>
-                    <tr>
-                        <td id="whitespace"></td>
-                        {this.state.data.map((person,index) => <Meta no={this.state.noPeople} key={index} data={person.person}/>)}
-                    </tr>
-                    <tr>
-                        <td className="type-header">events</td>
-                        {this.state.data.map((person,index)=><React.Fragment key={index}><td className="type-header">single</td><td className="type-header">average</td></React.Fragment>)}
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.events.map((event,index) => <tr key={index}><td className="event">{event}</td>{this.state.data.map((person,index)=> <Result key={index} person={person} event={event}/>)}</tr>)}
-                </tbody>
-            </table>
-            <AddPerson/>
-            </React.Fragment>
-        )
+        if (this.state.noPeople == this.state.data.length) {
+            return (
+                <React.Fragment>
+                <table id="comparison">
+                    <thead>
+                        <tr>
+                            <td id="whitespace"></td>
+                            {this.state.data.map((person,index) => <Meta no={this.state.noPeople} key={index} data={person.person}/>)}
+                        </tr>
+                        <tr>
+                            <td className="type-header">events</td>
+                            {this.state.data.map((person,index)=><React.Fragment key={index}><td className="type-header">single</td><td className="type-header">average</td></React.Fragment>)}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.events.map((event,index) => <tr key={index}><td className="event">{event}</td>{this.state.data.map((person,index)=> <Result key={index} person={person} event={event}/>)}</tr>)}
+                    </tbody>
+                </table>
+                <AddPerson/>
+                </React.Fragment>
+            )
+        }
+        else {
+            return (
+                <Loading/>
+            )
+        }
     }
     }
 }

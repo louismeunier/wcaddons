@@ -16,7 +16,7 @@ var AddPerson = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (AddPerson.__proto__ || Object.getPrototypeOf(AddPerson)).call(this, props));
 
-    _this.state = { value: '' };
+    _this.state = { value: '', submitted: false };
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -35,7 +35,7 @@ var AddPerson = function (_React$Component) {
     value: function handleSubmit(event) {
       var _this2 = this;
 
-      //this.state.value
+      this.setState({ submitted: true });
       axios.get("https://www.worldcubeassociation.org/api/v0/search/users?q=" + this.state.value).then(function (response) {
         var data = response.data;
         _this2.setState({ result: data.result });
@@ -44,6 +44,7 @@ var AddPerson = function (_React$Component) {
         console.log(error);
       }).then(function () {
         console.log("API called");
+        _this2.setState({ submitted: false });
       });
       event.preventDefault();
     }
@@ -61,7 +62,7 @@ var AddPerson = function (_React$Component) {
           )
         );
       } else {
-        if (this.state.result.length != 0) {
+        if (this.state.submitted) {
           return React.createElement(
             'div',
             { id: 'search' },
@@ -70,34 +71,47 @@ var AddPerson = function (_React$Component) {
               { onSubmit: this.handleSubmit },
               React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' })
             ),
-            React.createElement(
-              'div',
-              { id: 'results' },
-              this.state.result.map(function (person, index) {
-                return person.wca_id ? React.createElement(
-                  React.Fragment,
-                  { key: index },
-                  React.createElement(SearchResult, { key: index, res: person }),
-                  React.createElement('br', null)
-                ) : "";
-              })
-            )
+            React.createElement(Loading, null)
           );
         } else {
-          return React.createElement(
-            'div',
-            { id: 'search' },
-            React.createElement(
-              'form',
-              { onSubmit: this.handleSubmit },
-              React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' })
-            ),
-            React.createElement(
-              'h1',
-              null,
-              'No results found!'
-            )
-          );
+          if (this.state.result.length != 0) {
+            return React.createElement(
+              'div',
+              { id: 'search' },
+              React.createElement(
+                'form',
+                { onSubmit: this.handleSubmit },
+                React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' })
+              ),
+              React.createElement(
+                'div',
+                { id: 'results' },
+                this.state.result.map(function (person, index) {
+                  return person.wca_id ? React.createElement(
+                    React.Fragment,
+                    { key: index },
+                    React.createElement(SearchResult, { key: index, res: person }),
+                    React.createElement('br', null)
+                  ) : "";
+                })
+              )
+            );
+          } else {
+            return React.createElement(
+              'div',
+              { id: 'search' },
+              React.createElement(
+                'form',
+                { onSubmit: this.handleSubmit },
+                React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' })
+              ),
+              React.createElement(
+                'h1',
+                null,
+                'No results found!'
+              )
+            );
+          }
         }
       }
     }
