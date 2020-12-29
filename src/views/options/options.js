@@ -23,15 +23,13 @@ function themeBase(theme) {
     return themeElement;
 }
 function setThemeOptions() {
-    var options = document.getElementById("options");
-    var themeDiv = document.createElement("div");
+    var themeDiv = document.getElementById("themes");
 
     themeDiv.id="themes";
     let themes = ["lightDefault","darkDefault","monokai","terminal","cstimer","olivia"];
     for (var i=0;i<themes.length;i++) {
         themeDiv.insertAdjacentElement("afterbegin",themeBase(themes[i]));
     }
-    options.insertAdjacentElement("afterbegin",themeDiv);
 }
 
 var versionNumber = chrome.runtime.getManifest().version;

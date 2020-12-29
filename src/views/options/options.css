@@ -14,6 +14,7 @@ body {
     background-color: var(--second-bkd);
     text-align: center;
     padding: 10px;
+    padding-top: 30px;
 }
 #app-name {
     font-size: 75px;
@@ -31,24 +32,21 @@ a {
     text-decoration: none;
     color: slategray;
 }
+
 #options {
-    margin-top: 300px;
+    margin-top: 350px;
+    left:0;
+    right:0;
+    position: fixed;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-}
-.option {
-    background-color: var(--second-bkd);
-    color: gray;
-    border-radius: 10px;    
-    border-color: var(--font-color);
-    border-width: 2px;
     text-align: center;
 }
-
 #disclaimer {
     position: fixed;
     color: var(--highlight-color);
-    margin-bottom: 10px;
+    padding: 10px;
     bottom: 0;
     width: 100%;
     text-align: center;
@@ -59,15 +57,16 @@ a {
     height: 100px;
     width: 200px;
     text-align: center;
+    margin: 20px;
 }
 .theme-selector h2 {
     font-size: 25px;
 }
-
 .theme-selector:hover {
     cursor: pointer;
     font-style: italic;   
 }
+
 #themes {
     margin-top: 20px;
     height: 100px;
@@ -75,9 +74,6 @@ a {
     display: flex;
     justify-content: space-around;
     padding: 10px;
-}
-#selected {
-    color: yellow;
 }
 
 #cstimer {
