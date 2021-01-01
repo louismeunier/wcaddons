@@ -100,3 +100,20 @@ a {
     background-color: #535c68;
     color: #c4c4c4;
 }
+
+#wca-option {
+    margin-top: 50px;
+}
+#id-in {
+    border-radius: 20px;
+    height: 35px;
+    width: 180px;
+    text-align: center;
+    border-color: var(--highlight-color);
+}
+#id-in::placeholder {
+    text-align: center;
+}
+#id-submit {
+    border-radius: 15px;
+}

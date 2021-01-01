@@ -11,10 +11,13 @@
       "persistent": false
     },
     "content_scripts": [{
-        "js":["content/content.js"],
-        "css":["content/content.css"],
+        "js":["content/wca/content.js"],
+        "css":["content/wca/content.css"],
         "matches":["https://www.worldcubeassociation.org/persons/*"]
-    }],
+        },{
+        "js":["content/cstimer/cstimerContent.js","views/scripts/formatTimes.js"],
+        "matches":["https://cstimer.net/"]
+        }],
     "browser_action": {
         "default_popup": "views/popup/popup.html",
         "default_icon": {
@@ -33,5 +36,5 @@
   },
     "options_page": "views/options/options.html",
     "manifest_version": 2,
-    "content_security_policy": "script-src 'self' https://unpkg.com/react-dom@17/umd/react-dom.production.min.js https://unpkg.com/react@17/umd/react.production.min.js https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://unpkg.com/react@17/umd/react.development.js https://unpkg.com/react-dom@17/umd/react-dom.development.js; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js https://unpkg.com/prop-types@15.6/prop-types.min.js https://unpkg.com/recharts/umd/Recharts.min.js https://unpkg.com/react-dom@17/umd/react-dom.production.min.js https://unpkg.com/react@17/umd/react.production.min.js https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://unpkg.com/react@17/umd/react.development.js https://unpkg.com/react-dom@17/umd/react-dom.development.js; object-src 'self'"
   }
