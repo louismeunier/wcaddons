@@ -78,7 +78,7 @@ function compareAO5(scrType) {
 }
 
 function compareSingle(time) {
-  if (document.querySelector("#lcd").style.color=="rgb(255, 0, 0)") return;
+  if (document.querySelector("#lcd").style.color=="rgb(255, 0, 0)" ) return;
   var scrType = getSessionInfo();
   if (scrType===undefined) scrType = "333"
   var wcaEventID = eventIDConverter[scrType];
@@ -87,6 +87,7 @@ function compareSingle(time) {
   var currentTime = String(time).fromMMSSMM()<6000?String(time).fromMMSSMM():String(time).fromMMSSMM()/100;
   var compare = document.createElement("span");
   var compareSign;
+  //console.log(currentTime);
   if (currentTime<officialSingle) {
     compare.style.color = "green";
     compareSign = "-";
@@ -102,7 +103,10 @@ function compareSingle(time) {
   var dif = Math.round(Math.abs(currentTime-officialSingle)*100)/100;
   compare.innerText = "    " + compareSign + (dif>=6000?String(dif).toMMSSMM():dif);
   compare.style.fontSize = "75px";
-  document.querySelector("#lcd > span").insertAdjacentElement("beforeend",compare);
+  if (!document.querySelector("#lcd>span")) {document.querySelector("#lcd").insertAdjacentElement("beforeend",compare);}
+ else {
+  document.querySelector("#lcd>span").insertAdjacentElement("beforeend",compare);
+}
 }
 
 function getSessionInfo() {
@@ -111,7 +115,6 @@ function getSessionInfo() {
   var scrType = properties.scrType;
   return scrType;
 }
-
 //Gets indexed db (where times, scrambles, etc, are stored)
 function getIndexed(rank) {
   var db;
@@ -155,7 +158,8 @@ observer.observe(document.querySelector("#avgstr > span:nth-child(1)"), {
 //single observer
 const singleObserver = new MutationObserver(mutation => {
   var time = (mutation.length==1 && mutation[0].addedNodes[0].data!="solve"?mutation[0].addedNodes[0].data:"")+(mutation[0].addedNodes[1]?mutation[0].addedNodes[1].innerText:"");
-  if (time=="") return;
+
+  if (time==""||time=="undefined") return;
   compareSingle(time);
 })
 
