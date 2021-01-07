@@ -25,7 +25,6 @@ var Meta = function (_React$Component) {
         if (currentIDS.indexOf(id) != -1) {
           var index = currentIDS.indexOf(id);
           currentIDS.splice(index, 1);
-          //console.log("Removing entry");
         }
         chrome.storage.local.set({ "wcaData": currentIDS }, function (items) {
           //I don't want to have to reload here, but I can't get <Person/> to rerender on storage change...
@@ -63,15 +62,7 @@ var Meta = function (_React$Component) {
             }, height: "75px", src: this.props.data.avatar.url })
         );
       } else {
-        return React.createElement(
-          "div",
-          null,
-          React.createElement(
-            "h2",
-            null,
-            "Placeholder"
-          )
-        );
+        return React.createElement(Loading, null);
       }
     }
   }]);

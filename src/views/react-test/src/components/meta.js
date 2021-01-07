@@ -11,7 +11,6 @@ class Meta extends React.Component {
       if (currentIDS.indexOf(id)!=-1) {
           var index = currentIDS.indexOf(id);
           currentIDS.splice(index,1);
-          //console.log("Removing entry");
       }
       chrome.storage.local.set({"wcaData":currentIDS}, (items) => {
         //I don't want to have to reload here, but I can't get <Person/> to rerender on storage change...
@@ -36,9 +35,7 @@ class Meta extends React.Component {
     }
     else {
       return (
-        <div>
-          <h2>Placeholder</h2>
-        </div>
+        <Loading/>
       )
     }
 }
