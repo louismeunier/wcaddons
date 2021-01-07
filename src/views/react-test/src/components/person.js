@@ -19,12 +19,11 @@ class Person extends React.Component {
                     this.setState(prevState => ({ data: [...prevState.data, data]}));
                 })
                 .catch((error) => {
-                    //console.log("Error!");
+                    console.error(error);
                     return error;
                 })
                 .then(()=>{
                     console.log("API called");
-
                 })
         });
         
@@ -32,6 +31,7 @@ class Person extends React.Component {
   }
 
   format(type) {
+      //who's faster logic
     var event,eventCol,eventForm,id;
     for (var i=0;i<this.state.events.length;i++) {
         eventForm=[];
@@ -49,7 +49,6 @@ class Person extends React.Component {
   }
 
   componentDidUpdate() {
-    //console.log("Updated");
     this.format("single");
     this.format("average");
     setInitialTheme();

@@ -39,7 +39,7 @@ var Person = function (_React$Component) {
                             return { data: [].concat(_toConsumableArray(prevState.data), [data]) };
                         });
                     }).catch(function (error) {
-                        //console.log("Error!");
+                        console.error(error);
                         return error;
                     }).then(function () {
                         console.log("API called");
@@ -50,6 +50,7 @@ var Person = function (_React$Component) {
     }, {
         key: "format",
         value: function format(type) {
+            //who's faster logic
             var event, eventCol, eventForm, id;
             for (var i = 0; i < this.state.events.length; i++) {
                 eventForm = [];
@@ -68,7 +69,6 @@ var Person = function (_React$Component) {
     }, {
         key: "componentDidUpdate",
         value: function componentDidUpdate() {
-            //console.log("Updated");
             this.format("single");
             this.format("average");
             setInitialTheme();
