@@ -3,6 +3,7 @@
 class SearchResult extends React.Component {
     constructor(props) {
         super(props);
+        console.log(this.props.res);
     }
     addPerson() {
         var id = this.props.res.wca_id;

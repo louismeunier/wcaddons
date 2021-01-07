@@ -14,7 +14,10 @@ var SearchResult = function (_React$Component) {
     function SearchResult(props) {
         _classCallCheck(this, SearchResult);
 
-        return _possibleConstructorReturn(this, (SearchResult.__proto__ || Object.getPrototypeOf(SearchResult)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (SearchResult.__proto__ || Object.getPrototypeOf(SearchResult)).call(this, props));
+
+        console.log(_this.props.res);
+        return _this;
     }
 
     _createClass(SearchResult, [{
