@@ -38,12 +38,14 @@ var AddPerson = function (_React$Component) {
       this.setState({ submitted: true });
       axios.get("https://www.worldcubeassociation.org/api/v0/search/users?q=" + this.state.value).then(function (response) {
         var data = response.data;
-        _this2.setState({ result: data.result });
+        //remove all results w/o wca id (useless, can't look up results) AND limit to first 5 results
+        var formattedResult = data.result.filter(function (e) {
+          return e.wca_id != null;
+        }).slice(0, 5);
+        _this2.setState({ result: formattedResult });
       }).catch(function (error) {
-        console.log("Error!");
         console.log(error);
       }).then(function () {
-        console.log("API called");
         _this2.setState({ submitted: false });
       });
       event.preventDefault();
@@ -58,7 +60,8 @@ var AddPerson = function (_React$Component) {
           React.createElement(
             'form',
             { onSubmit: this.handleSubmit },
-            React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' })
+            React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' }),
+            React.createElement('img', { src: '../../../images/search.png', onClick: this.handleSubmit, height: '24' })
           )
         );
       } else {
@@ -69,7 +72,8 @@ var AddPerson = function (_React$Component) {
             React.createElement(
               'form',
               { onSubmit: this.handleSubmit },
-              React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' })
+              React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' }),
+              React.createElement('img', { src: '../../../images/search.png', onClick: this.handleSubmit, height: '24' })
             ),
             React.createElement(Loading, null)
           );
@@ -81,18 +85,19 @@ var AddPerson = function (_React$Component) {
               React.createElement(
                 'form',
                 { onSubmit: this.handleSubmit },
-                React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' })
+                React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' }),
+                React.createElement('img', { src: '../../../images/search.png', onClick: this.handleSubmit, height: '24' })
               ),
               React.createElement(
                 'div',
                 { id: 'results' },
                 this.state.result.map(function (person, index) {
-                  return person.wca_id ? React.createElement(
+                  return React.createElement(
                     React.Fragment,
                     { key: index },
                     React.createElement(SearchResult, { key: index, res: person }),
                     React.createElement('br', null)
-                  ) : "";
+                  );
                 })
               )
             );
@@ -103,11 +108,12 @@ var AddPerson = function (_React$Component) {
               React.createElement(
                 'form',
                 { onSubmit: this.handleSubmit },
-                React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' })
+                React.createElement('input', { id: 'add-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'Search by Name/WCA ID' }),
+                React.createElement('img', { src: '../../../images/search.png', onClick: this.handleSubmit, height: '24' })
               ),
               React.createElement(
                 'h1',
-                null,
+                { id: 'no-results' },
                 'No results found!'
               )
             );

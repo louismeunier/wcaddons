@@ -11,3 +11,4 @@ Accreditation for all icons used throughout the extension is available at [src/i
 ### current features
 
  - Compare a number of competitors against each other (~~in progress~~)
+ - Compare Cstimer results to your official results, in real time! (NOTE: this feature assumes that your first average is ao5, or mo3 for other events. May be enhanced in the future.)

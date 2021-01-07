@@ -12,3 +12,5 @@
 | "   " | [Wrench](https://www.flaticon.com/free-icon/wrench_953761?term=wrench&page=1&position=2&related_item_id=953761) | [Freepik](https://www.flaticon.com/authors/freepik) |
 | All Country Flags | [Country Flags API](https://www.countryflags.io/) | [warrigal](https://www.countryflags.io/) |
 | [sponsor.png](sponsor.png) | [Finances Collection](https://www.flaticon.com/free-icon/dollar-symbol_126179?term=dollar&page=1&position=3&related_item_id=126179) | [Gregor Cresnar](flaticon.com/authors/gregor-cresnar) |
+| [arrow.png](arrow.png) | [Pointers Icon Pack](https://www.flaticon.com/packs/pointers-3?k=1609612126584) | [Roundicons](https://roundicons.com) |
+| [search.png](search.png) | [Magnifier Pack](https://www.flaticon.com/packs/search-magnifiers?k=1610000407546) | [Freepik](https://www.flaticon.com/authors/freepik) |
